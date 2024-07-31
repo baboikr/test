@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Untitled Document</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+        <style>
+            .wrap{
+            }
+            .section{
+                margin:50px 10px;
+                padding:10px;
+                display: flex;
+                flex-direction: row;
+                column-gap: 10px;
+                background-color:skyblue;
+            }
+            .section > div{
+                flex-basis: 100px;
+                display:flex;
+                background:yellow;
+                height: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="section">
+                <div><span style="align-self: flex-start;">A</span></div>
+                <div><span style="align-self: center;">A</span></div>
+                <div><span style="align-self: flex-end;">A</span></div>
+            </div>
+            <div class="section" style="justify-content: flex-end;">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="section" style="justify-content:center;">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            </div>
+            <div class="section" style="justify-content: space-between;">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            </div>
+            <div class="section" style="justify-content: space-evenly;">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            </div>
+            <div class="section"  style="justify-content: space-around;">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </body>
+</html>
