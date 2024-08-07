@@ -4,7 +4,766 @@
 	<meta charset="utf-8">
 	<title>Untitled Document</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
-    
+    <style>
+		:root{
+			--padding-inner:0 20px;
+			--max-w:1048px;
+		}
+
+		body, * {
+			transition: 0.5s;
+			list-style-type: none;
+			text-decoration: none;
+			margin:0;
+			padding:0;
+			font-family: Toss Product Sans, Tossface, -apple-system, BlinkMacSystemFont, Bazier Square, Noto Sans KR, Segoe UI, Apple SD Gothic Neo, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+		}
+		h1, h2, h3, h4, h5, h6, span, p, div {
+			word-break: keep-all;
+		}
+		.bg_FFF{
+			background-color:#fff;
+		}
+		.bg_000{background-color: #000;}
+		.bg_f9{background-color:#f9fafb;}
+		.t_left{text-align: left;}
+		.t_center{
+			text-align: center !important;
+		}
+		/* text color */
+		.t_color_8b95a1{color:#8b95a1 !important;}
+		.t_color_d1d6dc{color:#d1d6dc !important;}
+		.t_color_b1b8c1{color: #b1b8c1 !important;}
+		.t_color_fff{color: #fff !important}
+		.t_color_b0b8c1{color:#b0b8c1 !important}
+
+		.br_mb{display: none;}
+		/* header */
+		.header{
+			position: fixed;
+			top:0;
+			right:0;
+			left: 0;
+			z-index: 9999999;
+			background-color: #fff;
+			border-bottom: 1px solid #e6e8ea;
+		}
+		.header .header_inner{
+			display: grid;
+			box-sizing: border-box;
+			max-width: var(--max-w);
+			margin: 0 auto;
+			grid-template-columns: 76px auto;
+			grid-template-rows: auto auto;
+			align-items: baseline;
+		}
+		.header .header_inner h1{
+			grid-column:1/1;
+			grid-row:1/1;
+			align-self: baseline;
+			height:20px;
+			text-align: left;
+		}
+		.header .header_inner h1 a,.header .header_inner h1 a img{
+			display: block;
+		}
+		.btn_controll_wrap{
+			display: none;
+			grid-column:2/2;
+			grid-row:1/1;
+			flex-direction: row;
+			justify-content: flex-end;
+			align-items:baseline;
+			column-gap: 28px;
+			align-self: baseline;
+		}
+		.btn_download{
+			display: inline-flex;
+			height: 8px;
+			padding:11px 16px;
+			font-size: 12px;
+			line-height: 8px;
+			color: #fff;
+			background-color: #3081f5;
+			border-radius:15px;
+		}
+		.menu_switcher{
+			display: inline-flex;
+			align-self: center;
+			width: 24px;
+			height: 24px;
+			background-image:url(img/icon_burger.svg);
+		}
+		.menu_switcher.on{background-image:url(img/icon_x.svg);}
+		.menu{
+			display: flex;
+			justify-content: end;
+			grid-column:2/2;
+			grid-row:1/1;
+			column-gap: 44px;
+			align-self: baseline;
+			padding:10px 0;
+		}
+		.menu_list{
+			align-self: baseline;
+			display: flex;
+			flex-direction: row;
+		}
+		.menu_list li{
+			align-self: baseline;
+			padding:0 10px;
+		}
+		.menu a{
+			display: block;
+			padding:10px;
+			font-size: 15px;
+			line-height: 20px;
+			color:#4e5968;
+			background-color: #fff;
+			border-radius:8px;
+		}
+		.menu a:hover{
+			background-color: rgb(236, 236, 236);
+		}
+		.lang_list{
+			display: flex;
+			flex-direction: row;
+			align-self: baseline;
+		}
+		.lang_list li{
+			display: flex;
+			padding:0 5px;
+			flex-direction: row;
+			align-items: baseline;
+		}
+		.lang_list li a{
+			color:#b1b8c1;
+		}
+		.lang_list li.on a{
+			color:#333d4b;
+		}
+		.lang_list li span{
+			color:#b1b8c1;
+			font-size: 15px;
+			padding-right: 10px;
+		}
+
+		/* top section */
+		.top_section{
+			display: block;
+			width:100vw;
+			height: 100vh;
+			padding:60px 0 0;
+			box-sizing: border-box;
+			background-image: url(img/new_main.png);
+			background-position:50%;
+			background-size:cover;
+			background-repeat: no-repeat;
+		}
+		.top_section_inner{
+			display: flex;
+			flex-direction: column;
+			box-sizing: border-box;
+			height: 100%;
+			max-width:var(--max-w);
+			padding: var(--padding-inner);
+			margin: 0 auto;
+			box-sizing: border-box;
+		}
+		.top_section .tit_wrap{
+			margin-top: 170px;
+		}
+		.tit_wrap .tit_h2{
+			width: 100%;
+			text-align: left;
+			margin-bottom: 50px;
+			font-size: 66px;
+			font-weight: 700;
+			line-height: 1.4;
+			color: #000;
+		}
+		.btn_download_wrap{
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			column-gap: 4px;
+		}
+		.btn_apple,.btn_android{
+			color: rgb(255, 255, 255);
+			font-size: 17px;
+			padding: 11px 22px 11px 50px;
+			border-radius: 8px;
+			background-color: rgba(0, 12, 30, 0.8);
+			background-repeat: no-repeat;
+			background-position: 19px 9px;
+			background-size: 24px 24px;
+		}
+		.btn_apple:hover,.btn_android:hover{
+			background-color: #46485c;
+
+		}
+		.btn_apple{
+			background-image: url(img/icon_apple.png);
+		}
+		.btn_android{
+			background-image: url(img/icon_googleplay.png);
+		}
+		.btn_next_section{
+			display:block;
+			width: 50px;
+			height: 50px;
+			align-self: center;
+			margin-top: auto;
+			background-image: url(img/arrow_down.svg);
+			background-repeat: no-repeat;
+			background-position:0;
+			background-size:50px;
+		}
+
+
+		/* section wrap */
+		.section_wrap{}
+		.section{padding:250px 0}
+		.section .tit_h2{
+			font-size: 50px;
+			font-weight: 700;
+			line-height: 1.4;
+			color: #191f28;
+		}
+		.section_inn{
+			box-sizing: border-box;
+			max-width: var(--max-w);
+			margin: 0 auto;
+		}
+
+		/* section1 */
+		.section1{}
+		.section1{
+			padding:200px 0;
+		}
+		.section1 h3{
+			font-size: 32px;
+			font-weight: 700;
+			line-height: 1.6;
+			color: #191f28;
+			text-align: center;
+			margin-bottom: 50px;
+		}
+
+		/* section2 */
+		.section2{}
+		.section2 .section_inn{
+			display: grid;
+			grid-template-columns: auto auto;
+			grid-template-rows: auto auto auto;
+		}
+		.section2 .tit_wrap{
+			grid-row:1/1;
+			grid-column: 1 / span 2;
+		}
+		.sub_tit strong{
+			display: block;
+			font-size: 28px;
+			font-weight: 700;
+			line-height: 1.3;
+			color: #3182f6;
+			margin-bottom: 30px;
+		}
+		.section2 .img_left{
+			grid-row: 2/2;
+			grid-column: 1/1;
+			translate:-106px 0;
+		}
+		.section2 .img_right{
+			grid-row: 2/2;
+			grid-column: 2/2;
+			translate:-45px -328px;
+		}
+		.phone_mock{
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-content: center;
+			width:600px;
+			height: 936px;
+			z-index: 11111;
+		}
+		.phone_mock > img{
+			margin-top: 98px;
+			width:342px;
+			height: 740px;
+		}
+		.phone_mock > span{
+			position: absolute;
+			top:0;
+			right:0;
+			bottom: 0;
+			left: 0;
+			background-image: url(img/iPhone12_Clay_Shadow.png);
+			background-repeat: none;
+			background-size: 600px 936px;
+			z-index:22222;
+		}
+		.section2 .descript{
+			grid-row: 3/3;
+			grid-column: 2/2;
+			translate: 0 -268px;	
+		}
+		.descript p{
+			font-size: 23px;
+			font-weight: 600;
+			line-height: 1.5;
+			color: rgb(51, 61, 75);
+		}
+
+		/* section3 */
+		.section3{}
+		.remittance_item{
+			display: flex;
+			flex-direction: row;
+		}
+		.remittance_item.flex_reverse{
+			flex-direction: row-reverse;
+		}
+		.remittance_item.flex_reverse > div{padding-left:50px;}
+		.remittance_item.flex_reverse img{
+			translate: -100px 0;
+		}
+		.remittance_item > div{
+			flex:1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.remittance_item > div img{
+			width:100%;
+		}
+		.remittance_service .sub_tit strong{
+			font-size: 20px;
+			font-weight: 600;
+			line-height: 1.4;
+			color: rgb(49, 130, 246);
+			margin:0 0 10px;
+		}
+		.sub_tit strong.ico{
+			padding-left: 28px;
+			background-repeat: no-repeat;
+			background-position:0 2px;
+			background-size:24px 24px;
+		}
+		.sub_tit strong.ico_01{
+			background-image: url(img/section3_icon1.svg);
+		}
+		.sub_tit strong.ico_02{
+			background-image: url(img/section3_icon2.svg);
+		}
+		.sub_tit strong.ico_03{
+			background-image: url(img/section3_icon3.svg);
+		}
+		.sub_tit strong{}
+		.sub_tit strong{}
+		.remittance_service .tit_h4{
+			margin-bottom: 20px;
+			font-size: 40px;
+			font-weight: 700;
+			line-height: 1.4;
+			color: rgb(51, 61, 75);
+		}
+		.remittance_service .descript{
+			font-size: 22px;
+			font-weight: 600;
+			line-height: 1.5;
+			color: rgb(107, 118, 132);
+		}
+
+		/* section4 */
+		.section4 .section_inn{
+			display: grid;
+			grid-template-columns: auto auto;
+			grid-template-rows: auto auto;
+			margin-bottom: -328px;
+		}
+		.section4 .img_right{
+			translate:110px -328px;
+		}
+		.descript strong{
+			display: block;
+			font-size: 48px;
+			font-weight: 700;
+			line-height: 1.5;
+			color: rgb(51, 61, 75);
+		}
+		.section4 .descript strong{
+			margin-bottom: 30px;
+		}
+		.section4 .descript{
+			align-content: end;
+			translate:0 -390px;
+		}
+
+		/* section5 */
+		.section5{}
+		.section5 dt img{
+			width: 120px;
+			height: 120px;
+			margin-bottom:30px;
+		}
+		.section5 dd strong{
+			display: block;
+			font-size: 28px;
+			font-weight: 700;
+			line-height: 1.5;
+			color: rgb(51, 61, 75);
+			margin-bottom: 10px;
+		}
+		.section5 dd p{
+			font-size: 22px;
+			font-weight: 600;
+			line-height: 1.5;
+			color: rgb(107, 118, 132);
+		}
+		.credit_service{
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			row-gap: 30px;
+			column-gap: 30px;
+			padding-top:30px;
+		}
+		.credit_service .credit_item{
+			flex-grow: 1;
+			flex-basis: cal(50% - 30px);
+			height: 400px;
+		}
+
+		/* section6 */
+		.section6{}
+		.stock_wrap{
+		}
+		.stock_wrap .phone_mock{
+			grid-row: 1/1;
+			grid-column: 2/2;
+		}
+		.stock_wrap .descript{
+			display: grid;
+			grid-template-rows: auto;
+			grid-template-columns: auto auto auto;
+			justify-content: center;
+		}
+		.stock_wrap .descript > p{
+			align-self: center;
+			text-wrap:nowrap;
+		}
+		.stock_wrap .descript .pc_p_left{
+			grid-row: 1/1;
+			grid-column: 1/1;
+			padding-bottom: 124px;
+		}
+		.stock_wrap .descript .pc_p_right{
+			grid-row: 1/1;
+			grid-column: 3/3;
+			padding-bottom: 124px;
+		}
+		.invest_list{
+			position: absolute;
+			right: auto;
+			bottom: 120px;
+			left: auto;
+			width:100vw;
+			height: 178px;
+			z-index: 3333;
+
+		}
+		.invest_list ul{
+			width:100%;
+			margin:0 auto;
+			display: flex;
+			flex-direction: row;
+			column-gap: 16px;
+			justify-content: center;
+			overflow: hidden;
+		}
+		.invest_list img{
+			width: 178px;
+			height: 178px;
+		}
+
+		/* section7 */
+		.section7{
+			width:100vw;
+			height: 100vh;
+			box-sizing: border-box;
+			background-image: url(img/section7_img1.jpg);
+			background-position:50%;
+			background-size:cover;
+			background-repeat: no-repeat;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		.section7 .tit_h2{
+			font-size: 100px;
+			font-weight: 700;
+			line-height: 1.3;
+			color: #f9fafb;
+			text-align: center;
+		}
+
+		/* section9 */
+		.section9 .tit_h2{margin-bottom: 140px;}
+		.doc_item{
+			padding-bottom: 210px;
+		}
+		.doc_item:last-child{
+			padding-bottom: 0;
+		}
+		.doc_item.twin{
+			display: flex;
+			column-gap: 30px;
+			align-items: center;
+		}
+		
+		.doc_item.twin dt{
+			margin-bottom: 0;
+		}
+		.doc_item dt{
+			margin-bottom: 24px;
+		}
+		.doc_item dt p{
+			font-size: 40px;
+			font-weight: 700;
+			line-height: 1.3;
+			color: #191f28;
+		}
+		.doc_item dt img{
+			width: 70%;
+			margin: 0 auto 60px;
+		}
+		.doc_item.twin img{
+			width: 100%;
+			margin:0 0 40px;
+		}
+		.doc_item dd p{
+			font-size: 20px;
+			font-weight: 600;
+			line-height: 1.5;
+			color: #333d4b;
+		}
+		.doc_item.case2 .img_wrap img{
+			width: 100%;
+			margin-bottom: 50px;
+		}
+		.doc_item.case2 dl{
+			display:flex;
+			column-gap: 10px;
+		}
+		.doc_item.case2 dl > *{
+			flex:1;
+		}
+
+		/* section10 */
+		.section10{}
+		.finance_service{
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+		.finance_service .finance_item{
+			flex-grow: 1;
+			flex-basis: 50%;
+		}
+		.finance_service .finance_item dl{
+			margin: 0 160px 100px 0
+		}
+		.finance_service .finance_item dt{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 120px;
+			height: 120px;
+			background-color: #f3f4f6;
+			border-radius: 26px;
+			margin-bottom: 30px;
+		}
+		.finance_service .finance_item dt.bg_edccf8{
+			background-color: #edccf8;
+		}
+		.finance_service .finance_item dt.bg_e8f3ff{
+			background-color: #e8f3ff;
+		}
+		.finance_service .finance_item dt.bg_afefd6{
+			background-color: #afefd6;
+		}
+		.finance_service .finance_item dt img{
+			width:60px;
+			height: 60px;
+		}
+		.finance_service .finance_item dd > span{
+			display: block;
+			margin-bottom: 6px;
+			font-size: 20px;
+			font-weight: 600;
+			line-height: 1.6;
+			color: #333d4b;
+		}
+		.finance_service .finance_item dd > p{
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 1.6;
+			color: #8b95a1;
+		}
+
+		/* section11 */
+		.section.section11{padding-top: 100px;}
+		.section11 .img_top img{
+			display: block;
+			width: 100%;
+			margin-bottom: 11px;
+		}
+		.section11 .tit_h2{
+			font-size: 60px;
+			font-weight: 700;
+			line-height: 1.4;
+			color: #fff;
+			margin-bottom: 21px;
+		}
+		.section11 div.descript{
+			font-size: 30px;
+			font-weight: 700;
+			line-height: 1.4;
+			color: #b0b8c1;
+			text-align: center;
+			margin-bottom: 200px;
+		}
+		.business_service ul{
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			column-gap:20px;
+		}
+		.business_service > ul > li{
+			flex:1;
+			flex-basis: calc(25% - 20px);
+		}
+		.business_service > ul > li dt p{
+			margin-bottom: 12px;
+			font-size: 30px;
+			font-weight: 700;
+			line-height: 1.3;
+			color: #fff;
+		}
+		.business_service > ul > li dd{
+			max-width: 300px;
+			margin-bottom: 38px;
+			font-size: 20px;
+			line-height: 1.6;
+			color: #b0b8c1;
+		}
+		.btn_blue_40{
+			background-color: #3182f6;
+			display: inline-flex;
+			font-size: 15px;
+			line-height: 18px;
+			padding: 11px 16px;
+			color: #f9fafb;
+			border-radius: 7px;
+		}
+
+		/* footer */
+		.footer{
+			background-color: #191f28;
+		}
+		.footer_inn{
+			max-width: var(--max-w);
+			margin:0 auto;
+			padding:50px 67px 100px;
+			box-sizing: border-box;
+		}
+		.top_footer dt{
+			font-size: 15px;
+			line-height: 30px;
+			font-weight: bold;
+			color: #b0b8c1;
+			padding: 0 0 5px;
+		}
+		.top_footer > ul{
+			display: flex;
+			padding-bottom: 50px;
+		}
+		.top_footer > ul > li{
+			flex:0;
+			flex-basis: 170px;
+		}
+		.top_footer > ul > li:last-child{
+			flex-basis:auto;
+			flex:1;
+		}
+		.top_footer dd li,.top_footer dd li a{
+			font-size: 15px;
+			line-height: 30px;
+			color: #6b7684;
+		}
+
+		.bottom_footer{}
+		.company_address dt{
+			font-size: 15px;
+			line-height: 1.5;
+			color:#b0b8c1;
+			font-weight: bold;
+			margin-bottom:16px;
+		}
+		.company_address dd,.company_address dd a{
+			color: #8b95a1;
+			font-size: 13px;
+			font-style: normal;
+			line-height: 20px;
+		}
+		.terms_service{padding:24px 0 30px;}
+		.terms_service ul{
+			display: inline-grid;
+			grid-template-columns: repeat(4, auto);
+			column-gap: 34px;
+			grid-row-gap: 4px;
+			row-gap: 4px;
+		}
+		.terms_service a{
+			display: block;
+			color: #6b7684;
+			font-size: 13px;
+			line-height: 18px;
+		}
+		.terms_service a:hover,.company_address dd a:hover,.top_footer dd li a:hover{
+			text-decoration: underline;
+		}
+		.socail_link ul{
+			display: flex;
+			flex-direction: row;
+		}
+		.socail_link ul li{
+			flex:0;
+			margin-right: 8px;
+			opacity: 0.5;
+		}
+		.socail_link ul li:hover{
+			opacity: 1;
+		}
+		.socail_link ul li:last-child{
+			margin-right: 0;
+		}
+		.socail_link ul li img{
+			width: 36px;
+			height: 36px;
+		}
+
+		/* tablets/phones, 768px and down */
+		@media only screen and (max-width: 768px) {
+			.menu{
+				margin:15px -15px 0;
+				grid-column: 1/ span 2;
+				grid-row:2/2;
+			}
+		} 
+	</style>
 </head>
     <body>
         <!--Main Wrap-->
@@ -14,25 +773,25 @@
             <div class="header">
                 <!--header bar-->
                 <div class="header_inner">
-                    <h1 class="logo"><a href="#none"><img src="" alt="Toss logo"></a></h1>
+                    <h1 class="logo"><a href="#none"><img src="img/toss_logo.svg" alt="toss" style="width:76px;height: 20px;"></a></h1>
 					 <!--btn_controll_wrap-->
 					<div class="btn_controll_wrap">
-						<a href="#none" class="download">앱다운로드</a>
-                    	<a href="#none" class="menu_switch"></a>
+						<a href="#none" class="btn_download">앱다운로드</a>
+                    	<a href="#none" class="menu_switcher on"></a>
 					</div>
 					<!--//btn_controll_wrap-->
                     <!--menu-->
-                    <div class="menu">
+                    <div class="menu" style="display:;">
                         <ul class="menu_list">
-                            <li>회사소개</li>
-                            <li>고객센터</li>
-                            <li>자주 묻는 질물</li>
-                            <li>트스인증서</li>
-                            <li>채용</li>
+                            <li><a href="#none">회사소개</a></li>
+                            <li><a href="#none">고객센터</a></li>
+                            <li><a href="#none">자주 묻는 질물</a></li>
+                            <li><a href="#none">트스인증서</a></li>
+                            <li><a href="#none">채용</a></li>
                         </ul>
                         <ul class="lang_list">
-                            <li>KOR</li>
-                            <li>ENG</li>
+                            <li class="on"><a href="#none">KOR</a></li>
+                            <li><span>|</span><a href="#none">ENG</a> </li>
                         </ul>
                     </div>
                     <!--//menu-->
@@ -45,14 +804,14 @@
 			<div class="top_section">
 				<div class="top_section_inner">
 					<div class="tit_wrap">
-						<h2 class="tit_h2">
+						<h2 class="tit_h2 t_center">
 							금융의 모든 것<br>
 							토스에서<br class="br_mb"> 쉽고 간편하게
 						</h2>
 					</div>
 					<div class="btn_download_wrap">
 						<a href="#none" class="btn_apple">App Store</a>
-						<a href="#none" class="btn_androd">Play Store</a>
+						<a href="#none" class="btn_android">Play Store</a>
 					</div>
 					<a href="#none" class="btn_next_section"><span style="display:none;">go to next section</span></a>
 				</div>
@@ -62,7 +821,7 @@
             <!--section wrap-->
             <div class="section_wrap">
 				<!-- section1 -->
-				<div class="section section1">
+				<div class="section section1 bg_f9">
 					<div class="section_inn">
 						<div class="tit_wrap">
 							<h3 class="tit_h3">
@@ -80,26 +839,27 @@
 					<div class="section_inn">
 						<div class="tit_wrap">
 							<div class="sub_tit"><strong>홈 · 소비</strong></div>
-							<h2 class="tit_h2">
+							<h2 class="tit_h2 t_left">
 								내 돈 관리,<br> 
 								지출부터 일정까지<br>
 								똑똑하게
 							</h2>
 						</div>
-						<div class="img_left"><img src="" alt="내 소비"></div>
-                        <div class="img_right"><img src="" alt="Toss 뱅크 홈"></div>
+						<div class="phone_mock img_left"><img src="img/section2_img1.png" alt="내 소비"><span></span></div>
+                        <div class="phone_mock img_right"><img src="img/section2_img2.png" alt="Toss 뱅크 홈"><span></span></div>
 						<div class="descript">
 							<p>
 								토스에 계좌와 카드를 연결해 보세요.<br>
 								계좌 잔액 대출·투자 내역은 기본,<br>
-								일자별 소비와 수입까지 한번에 볼 수 있어요.</p>
+								일자별 소비와 수입까지 한번에 볼 수 있어요.
+							</p>
 						</div>
 					</div>
 				</div>
 				<!--//section2 -->
 
 				<!-- section3 -->
-				<div class="section section3">
+				<div class="section section3 bg_f9">
 					<div class="section_inn">
 						<div class="tit_wrap">
 							<div class="sub_tit"><strong>송금</strong></div>
@@ -124,9 +884,9 @@
 										이제 토스와 함께 수수료 걱정 없이 송금하세요.
 									</div>
 								</div>
-								<div><img src="" alt=""></div>
+								<div><img src="img/section3_img1.png" alt=""></div>
 							</div>
-							<div class="remittance_item">
+							<div class="remittance_item flex_reverse">
 								<div>
 									<div class="sub_tit"><strong class="ico ico_02">사기계좌 조회</strong></div>
 									<div class="tit_wrap">
@@ -141,7 +901,7 @@
 										안전하게 송금할 수 있어요.
 									</div>
 								</div>
-								<div><img src="" alt=""></div>
+								<div><img src="img/section3_img2.png"" alt=""></div>
 							</div>
 							<div class="remittance_item">
 								<div>
@@ -157,7 +917,7 @@
 										점검 시간이 끝나면 토스가 알아서 송금해드릴게요.
 									</div>
 								</div>
-								<div><img src="" alt=""></div>
+								<div><img src="img/section3_img3.png"" alt=""></div>
 							</div>
 						</div>
 					</div>
@@ -167,7 +927,7 @@
 				<!-- section4 -->
 				<div class="section section4 bg_FFF">
 					<div class="section_inn">
-						<div class="tit_wrap">
+						<div class="tit_wrap" style="grid-column: 1 / span 2;grid-row: 1/1;">
 							<div class="sub_tit"><strong>대출</strong></div>
 							<h2 class="tit_h2">
 								여러 은행의 조건을<br>
@@ -175,16 +935,16 @@
 								확인해보세요
 							</h2>
 						</div>
-						<div class="img_right"><img src="" alt=""></div>
-						<div class="descript">
+						<div class="phone_mock img_right" style="grid-column: 2/2;grid-row: 2/2;"><img src="img/section4_img1.png" alt="대출 받기"><span></span></div>
+						<div class="descript" style="grid-column: 1/1;grid-row: 2/2;">
 							<strong>
 								한도는 높게,<br>
-								금리는 낮게,<br>
-								부담은 적게.<br>
+								금리는 <span class="t_color_8b95a1">낮게,</span><br>
+								부담은 <span class="t_color_d1d6dc">적게.</span><br>
 							</strong>
 							<p>
-								앉은 자리에서 여러 은행의 한도와 금리를 비교하고
-								내게 꼭 맞는 대출을 찾아보세요.
+								앉은 자리에서 여러 은행의 한도와 금리를 비교하고<br>
+								내게 꼭 맞는 대출을 찾아보세요.<br>
 								신용, 비상금, 대환, 주택담보대출 모두 가능해요.
 							</p>
 						</div>
@@ -193,7 +953,7 @@
 				<!--//section4 -->
 
 				<!-- section5 -->
-				<div class="section section5">
+				<div class="section section5 bg_f9">
 					<div class="section_inn">
 						<div class="tit_wrap">
 							<div class="sub_tit"><strong>신용</strong></div>
@@ -206,7 +966,7 @@
 						<div class="credit_service">
 							<div class="credit_item">
 								<dl>
-									<dt><img src="" alt=""></dt>
+									<dt><img src="img/section5_icon1.png" alt="내 신용점수"></dt>
 								</dl>
 								<dd>
 									<div><strong>내 신용점수</strong></div>
@@ -221,7 +981,7 @@
 							</div>
 							<div class="credit_item">
 								<dl>
-									<dt><img src="" alt=""></dt>
+									<dt><img src="img/section5_icon2.png" alt="신용점수 올리기"></dt>
 								</dl>
 								<dd>
 									<div><strong>신용점수 올리기</strong></div>
@@ -236,7 +996,7 @@
 							</div>
 							<div class="credit_item">
 								<dl>
-									<dt><img src="" alt=""></dt>
+									<dt><img src="img/section5_icon3.png" alt="신용관리 알림"></dt>
 								</dl>
 								<dd>
 									<div><strong>신용관리 알림</strong></div>
@@ -250,7 +1010,7 @@
 							</div>
 							<div class="credit_item">
 								<dl>
-									<dt><img src="" alt=""></dt>
+									<dt><img src="img/section5_icon4.png" alt="신용관리 팁"></dt>
 								</dl>
 								<dd>
 									<div><strong>신용관리 팁</strong></div>
@@ -277,42 +1037,40 @@
 								모두가 할 수 있도록
 							</h2>
 						</div>
-						<div class="descript mb">
-							<p>
-								이해하기 쉬운 용어, 설명이 필요 없는 직관적인 화면 구성,<br>
-								송금처럼 쉬운 구매 경험 그리고 투자 판단에 도움을 주는 콘텐츠까지
-							</p>
-						</div>
-						<div class="">
-							<p class="pc">
-								이해하기 쉬운 용어<br>
-								설명이 필요 없는<br>
-								직관적인 화면 구성
-							</p>
-							<div class=""><img src="" alt=""></div>
-							<p class="pc">
-								송금처럼 쉬운 구매 경험
-								그리고 투자 판단에
-								도움을 주는 콘텐츠까지
-							</p>
-						</div>
-						<div class="invest_list">
-							<ul>
-								<i><img src="" alt=""></i>
-								<i><img src="" alt=""></i>
-								<i><img src="" alt=""></i>
-								<i><img src="" alt=""></i>
-								<i><img src="" alt=""></i>
-								<i><img src="" alt=""></i>
-								<i><img src="" alt=""></i>
-							</ul>
-						</div>
-						<div class="descript">
-							<p>
-								별도 앱 설치 없이 토스에서 바로,<br>
-								토스증권으로<br class="br_mb">
-								나만의 투자를 시작해 보세요.
-							</p>
+						<div class="stock_wrap">
+							<div class="descript">
+								<p class="pc_p_left">
+									이해하기 쉬운 용어<br>
+									설명이 필요 없는<br>
+									직관적인 화면 구성
+								</p>
+								<p class="pc_p_right">
+									송금처럼 쉬운 구매 경험 <br>
+									그리고 투자 판단에 <br>
+									도움을 주는 콘텐츠까지
+								</p>
+								<div class="phone_mock">
+									<img src="img/section6_img1.png" alt=""><span></span>
+									<div class="invest_list">
+										<ul>
+											<i><img src="img/section6_img2.png" alt=""></i>
+											<i><img src="img/section6_img3.png" alt=""></i>
+											<i><img src="img/section6_img4.png" alt=""></i>
+											<i><img src="img/section6_img6.png" alt=""></i>
+											<i><img src="img/section6_img7.png" alt=""></i>
+											<i><img src="img/section6_img8.png" alt=""></i>
+											<i><img src="img/section6_img9.png" alt=""></i>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="descript">
+								<p class="t_center">
+									별도 앱 설치 없이 토스에서 바로,<br>
+									토스증권으로<br class="br_mb">
+									나만의 투자를 시작해 보세요.
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -322,9 +1080,7 @@
 				<div class="section section7 bg_FFF">
 					<div class="section_inn">
 						<div class="tit_wrap">
-							<h2 class="tit_h2">
-								꼭 필요했던 금융
-							</h2>
+							<h2 class="tit_h2">꼭 필요했던 금융</h2>
 						</div>
 					</div>
 				</div>
@@ -342,9 +1098,9 @@
 						<div class="doc_box">
 							<div class="doc_item">
 								<dl>
-									<dt>
-										<img src="" alt="">
-										<p>내 문서함<span>공공문서 확인부터 납부까지 한 번에</span></p>
+									<dt class="t_center">
+										<img src="img/section9_img1.jpg" alt="">
+										<p class="t_left">내 문서함 <span class="t_color_#b1b8c1">공공문서 확인부터 납부까지 한 번에</span></p>
 									</dt>
 									<dd>
 										<p>
@@ -356,22 +1112,21 @@
 								</dl>
 							</div>
 							<div class="doc_item twin">
-								<dl>
+								<dl style="flex:2;">
 									<dt>
-										<img src="" alt="">
+										<img src="img/section9_img2.jpg" alt="">
 										<p>
 											보험<br>
-											<span>
+											<span class="t_color_b1b8c1">
 												조회부터 상담,<br>
 												병원비 돌려받기를 간편하게
 											</span>
 										</p>
 									</dt>
-									<dd></dd>
 								</dl>
-								<dl>
+								<dl style="flex:1;">
 									<dt>
-										<img src="" alt="">
+										<img src="img/section9_img3.jpg" alt="">
 									</dt>
 									<dd>
 										<p>
@@ -384,21 +1139,18 @@
 								</dl>
 							</div>
 							<div class="doc_item case2">
-								<div class=""><img src="" alt=""></div>
+								<div class="img_wrap"><img src="img/section9_img4.jpg" alt=""></div>
 								<dl>
 									<dt>
 										<p>
 											내 부동산 · 자동차<br>
-											<span>
-												정기적으로 관리해보세요
-											</span>
+											<span class="t_color_b1b8c1">정기적으로 관리해보세요</span>
 										</p>
 									</dt>
 									<dd>
 										<p>
 											집과 자동차의 공통점은 잘 사서, 잘 관리하고, 잘 팔아야 한다는 것.<br>
-											시세조회부터 아파트 관리비 납부, 자동차 보험료 조회까지 부동산과<br>
-											자동차 관리도 토스에서 시작해 보세요.
+											시세조회부터 아파트 관리비 납부, 자동차 보험료 조회까지 부동산과 자동차 관리도 토스에서 시작해 보세요.
 										</p>
 									</dd>
 								</dl>
@@ -409,7 +1161,7 @@
 				<!--//section9 -->
 				
 				<!-- section10 -->
-				<div class="section section10">
+				<div class="section section10 bg_f9">
 					<div class="section_inn">
 						<div class="tit_wrap">
 							<div class="sub_tit"><strong>알면 좋은 금융</strong></div>
@@ -421,7 +1173,7 @@
 						<div class="finance_service">
 							<div class="finance_item">
 								<dl>
-									<dt><img src="" alt=""></dt>
+									<dt><img src="img/section10_img1.svg" alt=""></dt>
 									<dd>
 										<span>숨은 정부지원금 찾기</span>
 										<p>
@@ -434,7 +1186,7 @@
 							</div>
 							<div class="finance_item">
 								<dl>
-									<dt><img src="" alt=""></dt>
+									<dt class="bg_edccf8"><img src="img/section10_img2.svg" alt=""></dt>
 									<dd>
 										<span>카드 혜택 추천</span>
 										<p>
@@ -447,14 +1199,13 @@
 							</div>
 							<div class="finance_item">
 								<dl>
-									<dt><img src="" alt=""></dt>
+									<dt class="bg_afefd6"><img src="img/section10_img3.svg" alt=""></dt>
 									<dd>
 										<span>토스프라임</span>
 										<p>
-											매일 토스와 함께 하신다면 가입해보세요.<br>
-											가입비 월 5,900원으로 토스 간편결제 시 최대 4%<br>
-											적립, 토스증권 국내주식 거래액 1억원까지 수수료<br>
-											캐시백 혜택을 누려보세요.<br>
+											매일 토스와 함께 하신다면 가입해보세요.
+											가입비 월 5,900원으로 토스 간편결제 시 최대 4% 적립, 토스증권 국내주식 거래액 1억원까지 수수료
+											캐시백 혜택을 누려보세요. <br>
 											(20만원까지 4%, 20~60만원까지 1% 구간 별 적립)
 										</p>
 									</dd>
@@ -462,7 +1213,7 @@
 							</div>
 							<div class="finance_item">
 								<dl>
-									<dt><img src="" alt=""></dt>
+									<dt class="bg_e8f3ff"><img src="img/section10_img4.svg" alt=""></dt>
 									<dd>
 										<span>ATM 현금 찾기</span>
 										<p>
@@ -480,13 +1231,11 @@
 				<!-- section11 -->
 				<div class="section section11 bg_000">
 					<div class="section_inn">
-						<div class="img_top"><img src="" alt=""></div>
+						<div class="img_top"><img src="img/section11_img1.jpg" alt=""></div>
 						<div class="tit_wrap">
-							<h2 class="tit_h2">
-								사업도 토스와 함께
-							</h2>
+							<h2 class="tit_h2 t_color_fff t_center">사업도 토스와 함께</h2>
 						</div>
-						<div class="descript">
+						<div class="descript t_center">
 							사업을 시작하셨나요?<br>
 							사업의 시작부터 관리까지<br>
 							이제 토스와 함께 하세요.
@@ -508,7 +1257,7 @@
 									<dl>
 										<dt><p>내 매출 장부</p></dt>
 										<dd>
-											내 매출 장부 따로 관리할 필요 없어요.<br>
+											내 매출 장부 따로 관리할 필요 없어요.
 											총 매출, 총 입금, 총 지출을 보기 쉽게 알려드려요.
 										</dd>
 									</dl>
@@ -518,9 +1267,7 @@
 									<dl>
 										<dt><p>토스페이먼츠</p></dt>
 										<dd>
-											시작하기 어려웠던 온라인 비즈니스,<br>
-											온라인 결제 토스페이먼츠와
-											함께 해보세요.
+											시작하기 어려웠던 온라인 비즈니스, 온라인 결제 토스페이먼츠와 함께 해보세요.
 										</dd>
 									</dl>
 									<a href="#none" class="btn_blue_40"><span>가맹점 문의하기</span></a>
@@ -529,9 +1276,7 @@
 									<dl>
 										<dt><p>토스플레이스</p></dt>
 										<dd>
-											포스·주문·결제 시스템까지<br>
-											오프라인 매장을 위한<br>
-											모든 것이 준비되어 있어요.
+											포스·주문·결제 시스템까지 오프라인 매장을 위한 모든 것이 준비되어 있어요.
 										</dd>
 									</dl>
 									<a href="#none" class="btn_blue_40"><span>가맹점 문의하기</span></a>
@@ -623,7 +1368,7 @@
 					<!-- bottom_footer -->
 					<div class="bottom_footer">
 						<!-- comapny_address -->
-						<div class="comapny_address">
+						<div class="company_address">
 							<dl>
 								<dt>㈜비바리퍼블리카</dt>
 								<dd>
@@ -643,27 +1388,27 @@
 								<li><a href="#none">통합 금융정보 서비스 약관</a></li>
 								<li><a href="#none">마이데이터 서비스 이용약관</a></li>
 								<li><a href="#none">이용자의 권리 및 유의사항</a></li>
-								<li><a href="#none">개인정보 처리방침</a></li>
-								<li><a href="#none">채용팀 개인정보 처리방침</a></li>
-								<li><a href="#none">어드민 서비스 개인정보 처리방침</a></li>
+								<li><a href="#none" class="t_color_b0b8c1">개인정보 처리방침</a></li>
+								<li><a href="#none" class="t_color_b0b8c1">채용팀 개인정보 처리방침</a></li>
+								<li><a href="#none" class="t_color_b0b8c1">어드민 서비스 개인정보 처리방침</a></li>
 								<li><a href="#none">영상정보처리기기 운영 관리 방침</a></li>
-								<li><a href="#none">위치기반서비스 이용약관</a></li>
+								<li><a href="#none" class="t_color_b0b8c1">위치기반서비스 이용약관</a></li>
 								<li><a href="#none">가맹점 고지사항</a></li>
 								<li><a href="#none">토스 전자서명인증업무준칙</a></li>
 								<li><a href="#none">토스 전자인증서비스 약관</a></li>
 								<li><a href="#none">금융소비자보호</a></li>
-								<li><a href="#none">토스비즈니스 개인정보 처리방침</a></li>
+								<li><a href="#none" class="t_color_b0b8c1">토스비즈니스 개인정보 처리방침</a></li>
 							</ul>
 						</div>
 						<!--//terms_service -->
 
 						 <div class="socail_link">
 							<ul>
-								<li><a href="link:https://www.facebook.com/toss.official"><img src="" alt=""></a></li>
-								<li><a href="link:https://blog.toss.im/"><img src="" alt=""></a></li>
-								<li><a href="link:https://post.naver.com/tossblog"><img src="" alt=""></a></li>
-								<li><a href="link:https://twitter.com/toss__official"><img src="" alt=""></a></li>
-								<li><a href="link:https://www.instagram.com/toss.im/"><img src="" alt=""></a></li>
+								<li><a href="link:https://www.facebook.com/toss.official"><img src="img/icon_fb.svg" alt=""></a></li>
+								<li><a href="link:https://blog.toss.im/"><img src="img/icon_blog.svg" alt=""></a></li>
+								<li><a href="link:https://post.naver.com/tossblog"><img src="img/icon_naver.svg" alt=""></a></li>
+								<li><a href="link:https://twitter.com/toss__official"><img src="img/icon_tw.svg" alt=""></a></li>
+								<li><a href="link:https://www.instagram.com/toss.im/"><img src="img/icon_ig.svg" alt=""></a></li>
 							</ul>
 						</div>
 					</div>
