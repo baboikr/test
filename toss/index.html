@@ -224,7 +224,7 @@
 
 		/* section wrap */
 		.section_wrap{}
-		.section{padding:250px 0}
+		.section{padding:250px 24px}
 		.section .tit_h2{
 			font-size: 50px;
 			font-weight: 700;
@@ -255,8 +255,7 @@
 		.section2{}
 		.section2 .section_inn{
 			display: grid;
-			grid-template-columns: auto auto;
-			grid-template-rows: auto auto auto;
+			grid-template-columns: 50% 50%;
 		}
 		.section2 .tit_wrap{
 			grid-row:1/1;
@@ -278,37 +277,34 @@
 		.section2 .img_right{
 			grid-row: 2/2;
 			grid-column: 2/2;
-			translate:-45px -328px;
+			translate:100px -328px;
 		}
 		.phone_mock{
 			position: relative;
-			display: flex;
-			justify-content: center;
-			align-content: center;
-			width:600px;
-			height: 936px;
+			display: grid;
+			justify-items: center;
+			align-items: center;			
 			z-index: 11111;
 		}
 		.phone_mock > img{
-			margin-top: 98px;
-			width:342px;
-			height: 740px;
+			grid-row: 1/1;
+			grid-column: 1/1;
+			width: 57%;
+    		height: auto;
+			align-self: center;
 		}
-		.phone_mock > span{
-			position: absolute;
-			top:0;
-			right:0;
-			bottom: 0;
-			left: 0;
-			background-image: url(img/iPhone12_Clay_Shadow.png);
-			background-repeat: none;
-			background-size: 600px 936px;
+		.phone_mock > img.mock{
+			grid-row: 1/1;
+			grid-column: 1/1;
+			display: block;
+			width: 100%;
+			height: 100%;
 			z-index:22222;
 		}
 		.section2 .descript{
 			grid-row: 3/3;
 			grid-column: 2/2;
-			translate: 0 -268px;	
+			translate: 120px -268px;	
 		}
 		.descript p{
 			font-size: 23px;
@@ -381,11 +377,17 @@
 		.section4 .section_inn{
 			display: grid;
 			grid-template-columns: auto auto;
-			grid-template-rows: auto auto;
 			margin-bottom: -328px;
 		}
+		.section4 .tit_wrap{
+			grid-column: 1/1;
+		}
+		.section4 .phone_mock{
+			grid-column:2/2;
+			grid-row: 1 / span2;
+		}
 		.section4 .img_right{
-			translate:110px -328px;
+			translate:110px 0;
 		}
 		.descript strong{
 			display: block;
@@ -522,6 +524,12 @@
 			display: flex;
 			column-gap: 30px;
 			align-items: center;
+		}
+		.doc_item.twin dl{
+			flex:1;
+		}
+		.doc_item.twin dl:first-child{
+			flex:2;
 		}
 		
 		.doc_item.twin dt{
@@ -756,18 +764,21 @@
 			height: 36px;
 		}
 
-		/* tablets/phones, 768px and down */
-		@media only screen and (max-width: 768px) {
+		/* tablets/phones, 920px and down */
+		@media only screen and (max-width: 920px) {
+			.br_mb{display: block;}
 			.top_section,.section,.footer{
-				padding-right: 24px;
-				padding-left: 24px;
+				padding: 100px 24px;
+			}
+			.footer{
+				padding:60px 40px 80px;
 			}
 			.footer_inn{
 				padding-right: 0;
 				padding-left: 0;
 			}
 			.menu{
-				display: block;
+				display: none;
 				margin:15px -24px 0;
 				grid-column: 1/ span 2;
 				grid-row:2/2;
@@ -790,7 +801,210 @@
 			.menu_list li{
 				padding: 0;
 			}
-		} 
+
+			.tit_wrap .tit_h2{
+				font-size: 33px;
+				margin-top: 0;
+				margin-bottom: 60px;
+			}
+			.section .tit_wrap .tit_h2{
+				font-size: 28px;
+			}
+			.section1 h3{
+				font-size: 22px;
+				font-weight: 600;
+			}
+			.sub_tit strong{
+				font-size: 18px;
+				margin-bottom: 10px;
+			}
+			.phone_mock.img_left,.phone_mock.img_right{
+				translate:0;
+			}
+			.descript p{
+				font-size: 17px;
+			}
+			.section2 .descript{
+				grid-column:1/ span 2;
+				translate:0;
+			}
+
+			.remittance_item{
+				flex-direction: column;
+			}
+			.remittance_service .sub_tit strong{
+				font-size: 15px;
+				margin-bottom: 8px;
+			}
+			.remittance_service .tit_h4{
+				font-size: 24px;
+				margin-bottom: 10px;
+			}
+			.mb_padding_left_38{
+				padding-left:38px !important;
+			}
+			.remittance_item.flex_reverse {
+				flex-direction: column;
+				padding-left: 0;
+			}
+			.remittance_item.flex_reverse > div{
+				padding-left: 0;
+			}
+			.remittance_item.flex_reverse img{
+				translate: 0;
+			}
+			.sub_tit strong.ico{
+				background-size: 16px 16px;
+				padding-left: 20px;
+			}
+			.section4 .tit_wrap{
+				grid-row: 1 / 1;
+				grid-column: 1 / span 2;
+			}
+			.section4 .phone_mock{
+				grid-row: 2 / 2;
+				grid-column: 1 / span 2;
+				max-width: 375px;
+				justify-self: center;
+			}
+			.section4 .descript{
+				translate: 0;
+				grid-row: 3 / 3;
+				grid-column: 1 / span 2;
+			}
+			.section4 .section_inn{
+				margin-bottom: 0;
+			}
+			.section4 .descript strong{
+				font-size: 28px;
+			}
+			.credit_service{
+				flex-direction: column;
+			}
+			.section5 dt img {
+				width: 80px;
+				height: 80px;
+				margin-bottom: 20px;
+			}
+			.section5 dd strong {
+				font-size: 24px;
+				margin-bottom: 10px;
+			}
+			.section5 dd p{
+				font-size: 15px;
+			}
+			.credit_service .credit_item{
+				height: auto;
+			}
+			.stock_wrap .descript p.pc_p_left,.stock_wrap .descript p.pc_p_right{
+				display: none;
+			}
+			.stock_wrap .descript p.mb_p{
+				display: block;
+				font-size: 17px;
+			}
+			.stock_wrap .descript {
+				grid-template-columns: auto;
+				grid-template-rows: auto auto;
+			}
+			.stock_wrap .phone_mock {
+				grid-row: 2 / 2;
+				grid-column: 1 / 1;
+				max-width: 375px;
+				justify-self: center;
+			}
+			.stock_wrap .descript p{
+				font-size: 20px;
+				font-weight: 500;
+				line-height: 1.5;
+				color: rgb(78, 89, 104);
+			}
+			.stock_wrap .descript > p{
+				text-wrap: wrap;
+			}
+			.section7 .tit_wrap .tit_h2 {
+				font-size: 55px;
+				text-shadow: 0px 1px 20px rgba(0, 0, 0, 0.45);
+			}
+			.section9 .tit_wrap .tit_h2 {
+				font-size: 36px;
+			}
+			.doc_item {
+				padding-bottom: 100px;
+			}
+			.doc_item.twin{
+				flex-direction: column;
+			}
+			.doc_item.twin dl{
+				flex:1;
+			}
+			.doc_item dt p{
+				font-size: 26px;
+				margin-bottom: 30px;
+			}
+			.doc_item dd p{
+				font-size: 18px;
+			}
+			.doc_item dt{
+				margin-bottom: 0;
+			}
+			.doc_item.twin img{
+				margin-bottom: 30px;
+			}
+			.doc_item.case2 dl{
+				display: block;
+			}
+			.finance_service{
+				display: block;
+			}
+			.finance_service .finance_item dt{
+				width:80px;
+				height: 80px;
+			}
+			.finance_service .finance_item dl{
+				margin:0 0 30px;
+			}
+			.section11 .tit_wrap .tit_h2{
+				font-size: 36px;
+				margin-bottom: 21px;
+			}
+			.section11 div.descript{
+				font-size: 18px;
+				margin-bottom: 100px;
+			}
+			.business_service ul{
+				display: block;
+			}
+			.business_service > ul > li{
+				padding-top: 80px;
+			}
+			.business_service > ul > li:first-child{
+				padding-top:0;
+			}
+			.business_service > ul > li dt p{
+				font-size: 26px;
+			}
+			.business_service > ul > li dd{
+				margin-bottom: 20px;
+				font-size: 16px;
+			}
+			.top_footer > ul{
+				display: block;
+			}
+			.top_footer dt{
+				font-weight: normal;
+			}
+			.top_footer > ul > li{
+				padding-bottom: 40px;
+			}
+			.terms_service ul{
+				grid-template-columns: auto;
+				row-gap: 6px;
+			}
+			.terms_service ul li{
+				padding:5px 0;
+			}
+		}
 	</style>
 </head>
     <body>
@@ -834,7 +1048,7 @@
 					<div class="tit_wrap">
 						<h2 class="tit_h2 t_center">
 							금융의 모든 것<br>
-							토스에서<br class="br_mb"> 쉽고 간편하게
+							토스에서<br class="br_mb">쉽고 간편하게
 						</h2>
 					</div>
 					<div class="btn_download_wrap">
@@ -873,8 +1087,8 @@
 								똑똑하게
 							</h2>
 						</div>
-						<div class="phone_mock img_left"><img src="img/section2_img1.png" alt="내 소비"><span></span></div>
-                        <div class="phone_mock img_right"><img src="img/section2_img2.png" alt="Toss 뱅크 홈"><span></span></div>
+						<div class="phone_mock img_left"><img src="img/section2_img1.png" alt="내 소비"><img src="img/iPhone12_Clay_Shadow.png" alt="" class="mock"></div>
+                        <div class="phone_mock img_right"><img src="img/section2_img2.png" alt="Toss 뱅크 홈"><img src="img/iPhone12_Clay_Shadow.png" alt="" class="mock"></div>
 						<div class="descript">
 							<p>
 								토스에 계좌와 카드를 연결해 보세요.<br>
@@ -899,7 +1113,7 @@
 						</div>
 						<div class="remittance_service">
 							<div class="remittance_item">
-								<div>
+								<div class="mb_padding_left_38">
 									<div class="sub_tit"><strong class="ico ico_01">평생 무료 송금</strong></div>
 									<div class="tit_wrap">
 										<h4 class="tit_h4">
@@ -915,7 +1129,7 @@
 								<div><img src="img/section3_img1.png" alt=""></div>
 							</div>
 							<div class="remittance_item flex_reverse">
-								<div>
+								<div class="mb_padding_left_38">
 									<div class="sub_tit"><strong class="ico ico_02">사기계좌 조회</strong></div>
 									<div class="tit_wrap">
 										<h4 class="tit_h4">
@@ -932,7 +1146,7 @@
 								<div><img src="img/section3_img2.png"" alt=""></div>
 							</div>
 							<div class="remittance_item">
-								<div>
+								<div class="mb_padding_left_38">
 									<div class="sub_tit"><strong class="ico ico_03">자동이체 예약</strong></div>
 									<div class="tit_wrap">
 										<h4 class="tit_h4">
@@ -955,7 +1169,7 @@
 				<!-- section4 -->
 				<div class="section section4 bg_FFF">
 					<div class="section_inn">
-						<div class="tit_wrap" style="grid-column: 1 / span 2;grid-row: 1/1;">
+						<div class="tit_wrap">
 							<div class="sub_tit"><strong>대출</strong></div>
 							<h2 class="tit_h2">
 								여러 은행의 조건을<br>
@@ -963,8 +1177,8 @@
 								확인해보세요
 							</h2>
 						</div>
-						<div class="phone_mock img_right" style="grid-column: 2/2;grid-row: 2/2;"><img src="img/section4_img1.png" alt="대출 받기"><span></span></div>
-						<div class="descript" style="grid-column: 1/1;grid-row: 2/2;">
+						<div class="phone_mock img_right"><img src="img/section4_img1.png" alt="대출 받기"><img src="img/iPhone12_Clay_Shadow.png" alt="" class="mock"></div>
+						<div class="descript">
 							<strong>
 								한도는 높게,<br>
 								금리는 <span class="t_color_8b95a1">낮게,</span><br>
@@ -1067,6 +1281,9 @@
 						</div>
 						<div class="stock_wrap">
 							<div class="descript">
+								<p class="mb_p">
+									이해하기 쉬운 용어 설명이 필요 없는 직관적인 화면 구성 송금처럼 쉬운 구매 경험 그리고 투자 판단에 도움을 주는 콘텐츠까지
+								</p>
 								<p class="pc_p_left">
 									이해하기 쉬운 용어<br>
 									설명이 필요 없는<br>
@@ -1078,22 +1295,11 @@
 									도움을 주는 콘텐츠까지
 								</p>
 								<div class="phone_mock">
-									<img src="img/section6_img1.png" alt=""><span></span>
-									<div class="invest_list">
-										<ul>
-											<i><img src="img/section6_img2.png" alt=""></i>
-											<i><img src="img/section6_img3.png" alt=""></i>
-											<i><img src="img/section6_img4.png" alt=""></i>
-											<i><img src="img/section6_img6.png" alt=""></i>
-											<i><img src="img/section6_img7.png" alt=""></i>
-											<i><img src="img/section6_img8.png" alt=""></i>
-											<i><img src="img/section6_img9.png" alt=""></i>
-										</ul>
-									</div>
+									<img src="img/section6_img1.png" alt=""><img src="img/iPhone12_Clay_Shadow.png" alt="" class="mock">
 								</div>
 							</div>
 							<div class="descript">
-								<p class="t_center">
+								<p class="t_center .mb_low_descript">
 									별도 앱 설치 없이 토스에서 바로,<br>
 									토스증권으로<br class="br_mb">
 									나만의 투자를 시작해 보세요.
@@ -1128,19 +1334,22 @@
 								<dl>
 									<dt class="t_center">
 										<img src="img/section9_img1.jpg" alt="">
-										<p class="t_left">내 문서함 <span class="t_color_#b1b8c1">공공문서 확인부터 납부까지 한 번에</span></p>
+										<p class="t_left">
+											세금 납부, 등본 발급까지<br>
+											 <span class="t_color_b1b8c1">토스로 한 번에</span>
+										</p>
 									</dt>
 									<dd>
 										<p>
-											건강검진, 국가장학금 신청, 교통범칙금·과태료 납부.<br>
-											그동안 종이로 받았던 문서들 꼼꼼히 챙기느라 고생했어요.<br>
-											앞으로는 토스 내 문서함에서 간단히 받아보고 납부할 수 있어요.
+											놓치기 쉬운 세금 납부 및 환급은 물론<br>
+											발급을 받을 때마다 귀찮았던 주민등록 등초본까지.<br>
+											이제 토스로 편하게 신청하고 받아보세요.
 										</p>
 									</dd>
 								</dl>
 							</div>
 							<div class="doc_item twin">
-								<dl style="flex:2;">
+								<dl>
 									<dt>
 										<img src="img/section9_img2.jpg" alt="">
 										<p>
@@ -1152,16 +1361,13 @@
 										</p>
 									</dt>
 								</dl>
-								<dl style="flex:1;">
+								<dl>
 									<dt>
 										<img src="img/section9_img3.jpg" alt="">
 									</dt>
 									<dd>
 										<p>
-											또래보다 보험료는 적절하게 내고 있는지,<br>
-											낸 만큼 보장받고 있는지 확인해 보세요.<br>
-											전문가와의 상담을 통해 내게 딱 맞는 보험을<br>
-											추천 받고, 병원비를 간편하게 청구할 수 있어요.
+											또래보다 보험료는 적절하게 내고 있는지,낸 만큼 보장받고 있는지 확인해 보세요. 전문가와의 상담을 통해 내게 딱 맞는 보험을 추천 받고, 병원비를 간편하게 청구할 수 있어요.
 										</p>
 									</dd>
 								</dl>
