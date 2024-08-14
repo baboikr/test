@@ -9,8 +9,11 @@
 			--padding-inner:0 20px;
 			--max-w:1048px;
 		}
-
-		body, * {
+		html,body{
+			width: 100%;
+			overflow-x: hidden;
+		}
+		html,body,* {
 			transition: 0.5s;
 			list-style-type: none;
 			text-decoration: none;
@@ -252,7 +255,7 @@
 		}
 
 		/* section2 */
-		.section2{}
+		.section2{padding-bottom: 100px;}
 		.section2 .section_inn{
 			display: grid;
 			grid-template-columns: 50% 50%;
@@ -304,7 +307,7 @@
 		.section2 .descript{
 			grid-row: 3/3;
 			grid-column: 2/2;
-			translate: 120px -268px;	
+			translate: 60px -268px;	
 		}
 		.descript p{
 			font-size: 23px;
@@ -376,15 +379,16 @@
 		/* section4 */
 		.section4 .section_inn{
 			display: grid;
+			grid-template-rows: auto;
 			grid-template-columns: auto auto;
-			margin-bottom: -328px;
 		}
 		.section4 .tit_wrap{
-			grid-column: 1/1;
+			grid-row: 1 / 1;
+			grid-column: 1 / 2;
 		}
 		.section4 .phone_mock{
-			grid-column:2/2;
-			grid-row: 1 / span2;
+			grid-column:2 / 3;
+			grid-row: 1 / 1;
 		}
 		.section4 .img_right{
 			translate:110px 0;
@@ -400,8 +404,9 @@
 			margin-bottom: 30px;
 		}
 		.section4 .descript{
-			align-content: end;
-			translate:0 -390px;
+			grid-row: 1 / 1;
+			grid-column: 1 / 2;
+			align-self: end;
 		}
 
 		/* section5 */
@@ -444,27 +449,29 @@
 		.stock_wrap{
 		}
 		.stock_wrap .phone_mock{
-			grid-row: 1/1;
-			grid-column: 2/2;
+			grid-row: 1/2;
+			grid-column: 2 / span 2;
 		}
 		.stock_wrap .descript{
 			display: grid;
 			grid-template-rows: auto;
-			grid-template-columns: auto auto auto;
+			grid-template-columns: repeat(4, 1fr);
 			justify-content: center;
 		}
 		.stock_wrap .descript > p{
 			align-self: center;
-			text-wrap:nowrap;
+		}
+		.stock_wrap .descript > p.mb_p{
+			display: none;
 		}
 		.stock_wrap .descript .pc_p_left{
-			grid-row: 1/1;
-			grid-column: 1/1;
+			grid-row: 1/2;
+			grid-column: 1/2;
 			padding-bottom: 124px;
 		}
 		.stock_wrap .descript .pc_p_right{
-			grid-row: 1/1;
-			grid-column: 3/3;
+			grid-row: 1/2;
+			grid-column: 4/5;
 			padding-bottom: 124px;
 		}
 		.invest_list{
@@ -475,8 +482,8 @@
 			width:100vw;
 			height: 178px;
 			z-index: 3333;
-
 		}
+
 		.invest_list ul{
 			width:100%;
 			margin:0 auto;
