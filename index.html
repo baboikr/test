@@ -11,7 +11,9 @@
 		}
 		html,body{
 			width: 100%;
-			overflow-x: hidden;
+			height: 100%;
+			margin:0;
+			overflow: hidden;
 		}
 		html,body,* {
 			transition: 0.5s;
@@ -41,13 +43,18 @@
 		.t_color_b0b8c1{color:#b0b8c1 !important}
 
 		.br_mb{display: none;}
+
+
+		.main_wrap{
+			display: grid;
+			grid-template-rows: 60px 1fr;
+			grid-template-columns: 1fr;
+			height: 100%;
+			width: 100%;
+		}
+
 		/* header */
 		.header{
-			position: fixed;
-			top:0;
-			right:0;
-			left: 0;
-			z-index: 9999999;
 			background-color: #fff;
 			border-bottom: 1px solid #e6e8ea;
 		}
@@ -62,8 +69,8 @@
 			align-items: baseline;
 		}
 		.header .header_inner h1{
-			grid-column:1/1;
-			grid-row:1/1;
+			grid-column:1/2;
+			grid-row:1/2;
 			align-self: baseline;
 			height:20px;
 			text-align: left;
@@ -73,8 +80,8 @@
 		}
 		.btn_controll_wrap{
 			display: none;
-			grid-column:2/2;
-			grid-row:1/1;
+			grid-column:2/3;
+			grid-row:1/2;
 			flex-direction: row;
 			justify-content: flex-end;
 			align-items:baseline;
@@ -156,8 +163,7 @@
 		.top_section{
 			display: block;
 			width:100vw;
-			height: 100vh;
-			padding:60px 0 0;
+			height: calc(100vh-60px);
 			box-sizing: border-box;
 			background-image: url(img/new_main.png);
 			background-position:50%;
@@ -226,7 +232,10 @@
 
 
 		/* section wrap */
-		.section_wrap{}
+		.section_wrap{
+			overflow-y: auto;
+			height: 100%;
+		}
 		.section{padding:250px 24px}
 		.section .tit_h2{
 			font-size: 50px;
@@ -788,7 +797,7 @@
 				display: none;
 				margin:15px -24px 0;
 				grid-column: 1/ span 2;
-				grid-row:2/2;
+				grid-row:2/3;
 			}
 			.menu a{
 				border-radius: 0;
@@ -1049,26 +1058,26 @@
             </div>
             <!--//header-->
 
-			 <!--top section-->
-			<div class="top_section">
-				<div class="top_section_inner">
-					<div class="tit_wrap">
-						<h2 class="tit_h2 t_center">
-							금융의 모든 것<br>
-							토스에서<br class="br_mb">쉽고 간편하게
-						</h2>
-					</div>
-					<div class="btn_download_wrap">
-						<a href="#none" class="btn_apple">App Store</a>
-						<a href="#none" class="btn_android">Play Store</a>
-					</div>
-					<a href="#none" class="btn_next_section"><span style="display:none;">go to next section</span></a>
-				</div>
-			</div>
-			<!--//top section-->
-
             <!--section wrap-->
             <div class="section_wrap">
+				<!--top section-->
+				<div class="top_section">
+					<div class="top_section_inner">
+						<div class="tit_wrap">
+							<h2 class="tit_h2 t_center">
+								금융의 모든 것<br>
+								토스에서<br class="br_mb">쉽고 간편하게
+							</h2>
+						</div>
+						<div class="btn_download_wrap">
+							<a href="#none" class="btn_apple">App Store</a>
+							<a href="#none" class="btn_android">Play Store</a>
+						</div>
+						<a href="#none" class="btn_next_section"><span style="display:none;">go to next section</span></a>
+					</div>
+				</div>
+				<!--//top section-->
+
 				<!-- section1 -->
 				<div class="section section1 bg_f9">
 					<div class="section_inn">
@@ -1527,136 +1536,137 @@
 					</div>
 				</div>
 				<!--//section11 -->
+
+				<!-- footer -->
+				<div class="footer">
+					<div class="footer_inn">
+						<!-- top_footer -->
+						<div class="top_footer">
+							<ul>
+								<li>
+									<dl>
+										<dt>서비스</dt>
+										<dd>
+											<ul>
+												<li><a href="#none">공지사항</a></li>
+												<li><a href="#none">자주 묻는 질문</a></li>
+												<li><a href="#none">공동인증서 관리</a></li>
+												<li><a href="#none">계정 일시잠금</a></li>
+												<li><a href="#none">고객센터</a></li>
+												<li><a href="#none">브렌드 리소스센터</a></li>
+												<li><a href="#none">토스의 개인정보 보호</a></li>
+												<li><a href="#none">토스유스카드</a></li>
+											</ul>
+										</dd>
+									</dl>
+								</li>
+								<li>
+									<dl>
+										<dt>회사</dt>
+										<dd>
+											<ul>
+												<li><a href="#none">회사 소개</a></li>
+												<li><a href="#none">토스페이먼츠</a></li>
+												<li><a href="#none">토스인슈어런스</a></li>
+												<li><a href="#none">토스증권</a></li>
+												<li><a href="#none">토스씨엑스</a></li>
+												<li><a href="#none">토스뱅크</a></li>
+												<li><a href="#none">토스프레이스</a></li>
+												<li><a href="#none">토스모바일</a></li>
+												<li><a href="#none">채용</a></li>
+												<li><a href="#none">기술 블로그</a></li>
+												<li><a href="#none">블록그</a></li>
+												<li><a href="#none">공고</a></li>
+											</ul>
+										</dd>
+									</dl>
+								</li>
+								<li>
+									<dl>
+										<dt>문의</dt>
+										<dd>
+											<ul>
+												<li><a href="#none">사업 제휴</a></li>
+												<li><a href="#none">토스쇼핑 입저문의</a></li>
+												<li><a href="#none">광고 문의</a></li>
+												<li><a href="#none">인증 사업 문의</a></li>
+												<li><a href="#none">마케팅·PR</a></li>
+												<li><a href="#none">IR</a></li>
+											</ul>
+										</dd>
+									</dl>
+								</li>
+								<li>
+									<dl>
+										<dt>고객센터</dt>
+										<dd>
+											<ul>
+												<li>정화: <a href="tel:1599-4905">1599-4905</a> (24시간 연중무휴)</li>
+												<li><a href="mailto:support@toss.im">이메일(고객전용): support@toss.im</a></li>
+												<li><a href="mailto:safe@toss.im">이메일(의부기관전용): safe@toss.im</a></li>
+												<li><a href="#none">민원점수</a></li>
+											</ul>
+										</dd>
+									</dl>
+								</li>
+							</ul>
+						</div>
+						<!--//top_footer -->
+
+						<!-- bottom_footer -->
+						<div class="bottom_footer">
+							<!-- comapny_address -->
+							<div class="company_address">
+								<dl>
+									<dt>㈜비바리퍼블리카</dt>
+									<dd>
+										<p>사업자 등록번호 : 120-88-01280 | 대표 : 이승건</p>
+										<p>호스팅 서비스 : 주식회사 비바리퍼블리카 | 통신판매업 신고번호 : 2014-서울강남-03377 <a href="#none">사업자정보확인</a></p>
+										<p>06236 서울특별시 강남구 테헤란로 142, 4층, 10층, 11층, 12층, 13층, 22층, 23층 (역삼동, 아크플레이스)</p>
+										<p>고객센터 : 서울특별시 강남구 테헤란로 133, 9층 (역삼동, 한국타이어빌딩)</p>
+									</dd>
+								</dl>
+							</div>
+							<!--//comapny_address -->
+
+							<!-- terms_service -->
+							<div class="terms_service">
+								<ul>
+									<li><a href="#none">서비스 이용약관</a></li>
+									<li><a href="#none">통합 금융정보 서비스 약관</a></li>
+									<li><a href="#none">마이데이터 서비스 이용약관</a></li>
+									<li><a href="#none">이용자의 권리 및 유의사항</a></li>
+									<li><a href="#none" class="t_color_b0b8c1">개인정보 처리방침</a></li>
+									<li><a href="#none" class="t_color_b0b8c1">채용팀 개인정보 처리방침</a></li>
+									<li><a href="#none" class="t_color_b0b8c1">어드민 서비스 개인정보 처리방침</a></li>
+									<li><a href="#none">영상정보처리기기 운영 관리 방침</a></li>
+									<li><a href="#none" class="t_color_b0b8c1">위치기반서비스 이용약관</a></li>
+									<li><a href="#none">가맹점 고지사항</a></li>
+									<li><a href="#none">토스 전자서명인증업무준칙</a></li>
+									<li><a href="#none">토스 전자인증서비스 약관</a></li>
+									<li><a href="#none">금융소비자보호</a></li>
+									<li><a href="#none" class="t_color_b0b8c1">토스비즈니스 개인정보 처리방침</a></li>
+								</ul>
+							</div>
+							<!--//terms_service -->
+
+							<div class="socail_link">
+								<ul>
+									<li><a href="link:https://www.facebook.com/toss.official"><img src="img/icon_fb.svg" alt=""></a></li>
+									<li><a href="link:https://blog.toss.im/"><img src="img/icon_blog.svg" alt=""></a></li>
+									<li><a href="link:https://post.naver.com/tossblog"><img src="img/icon_naver.svg" alt=""></a></li>
+									<li><a href="link:https://twitter.com/toss__official"><img src="img/icon_tw.svg" alt=""></a></li>
+									<li><a href="link:https://www.instagram.com/toss.im/"><img src="img/icon_ig.svg" alt=""></a></li>
+								</ul>
+							</div>
+						</div>
+						<!--//bottom_footer -->
+					</div>
+				</div>
+				<!-- footer -->
             </div>
             <!--//section wrap-->
 
-			<!-- footer -->
-			<div class="footer">
-				<div class="footer_inn">
-					<!-- top_footer -->
-					<div class="top_footer">
-						<ul>
-							<li>
-								 <dl>
-									<dt>서비스</dt>
-									 <dd>
-										<ul>
-											<li><a href="#none">공지사항</a></li>
-											<li><a href="#none">자주 묻는 질문</a></li>
-											<li><a href="#none">공동인증서 관리</a></li>
-											<li><a href="#none">계정 일시잠금</a></li>
-											<li><a href="#none">고객센터</a></li>
-											<li><a href="#none">브렌드 리소스센터</a></li>
-											<li><a href="#none">토스의 개인정보 보호</a></li>
-											<li><a href="#none">토스유스카드</a></li>
-										</ul>
-									 </dd>
-								</dl>
-							</li>
-							<li>
-								 <dl>
-									<dt>회사</dt>
-									 <dd>
-										<ul>
-											<li><a href="#none">회사 소개</a></li>
-											<li><a href="#none">토스페이먼츠</a></li>
-											<li><a href="#none">토스인슈어런스</a></li>
-											<li><a href="#none">토스증권</a></li>
-											<li><a href="#none">토스씨엑스</a></li>
-											<li><a href="#none">토스뱅크</a></li>
-											<li><a href="#none">토스프레이스</a></li>
-											<li><a href="#none">토스모바일</a></li>
-											<li><a href="#none">채용</a></li>
-											<li><a href="#none">기술 블로그</a></li>
-											<li><a href="#none">블록그</a></li>
-											<li><a href="#none">공고</a></li>
-										</ul>
-									 </dd>
-								</dl>
-							</li>
-							<li>
-								 <dl>
-									<dt>문의</dt>
-									 <dd>
-										<ul>
-											 <li><a href="#none">사업 제휴</a></li>
-											<li><a href="#none">토스쇼핑 입저문의</a></li>
-											<li><a href="#none">광고 문의</a></li>
-											<li><a href="#none">인증 사업 문의</a></li>
-											<li><a href="#none">마케팅·PR</a></li>
-											<li><a href="#none">IR</a></li>
-										</ul>
-									 </dd>
-								</dl>
-							</li>
-							<li>
-								 <dl>
-									<dt>고객센터</dt>
-									 <dd>
-										<ul>
-											<li>정화: <a href="tel:1599-4905">1599-4905</a> (24시간 연중무휴)</li>
-											<li><a href="mailto:support@toss.im">이메일(고객전용): support@toss.im</a></li>
-											<li><a href="mailto:safe@toss.im">이메일(의부기관전용): safe@toss.im</a></li>
-											<li><a href="#none">민원점수</a></li>
-										</ul>
-									 </dd>
-								</dl>
-							</li>
-						</ul>
-					</div>
-					<!--//top_footer -->
-
-					<!-- bottom_footer -->
-					<div class="bottom_footer">
-						<!-- comapny_address -->
-						<div class="company_address">
-							<dl>
-								<dt>㈜비바리퍼블리카</dt>
-								<dd>
-									<p>사업자 등록번호 : 120-88-01280 | 대표 : 이승건</p>
-									<p>호스팅 서비스 : 주식회사 비바리퍼블리카 | 통신판매업 신고번호 : 2014-서울강남-03377 <a href="#none">사업자정보확인</a></p>
-									<p>06236 서울특별시 강남구 테헤란로 142, 4층, 10층, 11층, 12층, 13층, 22층, 23층 (역삼동, 아크플레이스)</p>
-									<p>고객센터 : 서울특별시 강남구 테헤란로 133, 9층 (역삼동, 한국타이어빌딩)</p>
-								</dd>
-							</dl>
-						</div>
-						<!--//comapny_address -->
-
-						<!-- terms_service -->
-						 <div class="terms_service">
-							<ul>
-								<li><a href="#none">서비스 이용약관</a></li>
-								<li><a href="#none">통합 금융정보 서비스 약관</a></li>
-								<li><a href="#none">마이데이터 서비스 이용약관</a></li>
-								<li><a href="#none">이용자의 권리 및 유의사항</a></li>
-								<li><a href="#none" class="t_color_b0b8c1">개인정보 처리방침</a></li>
-								<li><a href="#none" class="t_color_b0b8c1">채용팀 개인정보 처리방침</a></li>
-								<li><a href="#none" class="t_color_b0b8c1">어드민 서비스 개인정보 처리방침</a></li>
-								<li><a href="#none">영상정보처리기기 운영 관리 방침</a></li>
-								<li><a href="#none" class="t_color_b0b8c1">위치기반서비스 이용약관</a></li>
-								<li><a href="#none">가맹점 고지사항</a></li>
-								<li><a href="#none">토스 전자서명인증업무준칙</a></li>
-								<li><a href="#none">토스 전자인증서비스 약관</a></li>
-								<li><a href="#none">금융소비자보호</a></li>
-								<li><a href="#none" class="t_color_b0b8c1">토스비즈니스 개인정보 처리방침</a></li>
-							</ul>
-						</div>
-						<!--//terms_service -->
-
-						 <div class="socail_link">
-							<ul>
-								<li><a href="link:https://www.facebook.com/toss.official"><img src="img/icon_fb.svg" alt=""></a></li>
-								<li><a href="link:https://blog.toss.im/"><img src="img/icon_blog.svg" alt=""></a></li>
-								<li><a href="link:https://post.naver.com/tossblog"><img src="img/icon_naver.svg" alt=""></a></li>
-								<li><a href="link:https://twitter.com/toss__official"><img src="img/icon_tw.svg" alt=""></a></li>
-								<li><a href="link:https://www.instagram.com/toss.im/"><img src="img/icon_ig.svg" alt=""></a></li>
-							</ul>
-						</div>
-					</div>
-					<!--//bottom_footer -->
-				</div>
-			</div>
-			<!-- footer -->
         </div>
         <!--//Main Wrap-->
     </body>
