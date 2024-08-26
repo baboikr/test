@@ -2,7 +2,7 @@
 <html>
     <head>
 	<meta charset="utf-8">
-	<title>Untitled Document</title>
+	<title>toss bank landing page</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
     <style>
 		:root{
@@ -26,6 +26,7 @@
 		h1, h2, h3, h4, h5, h6, span, p, div {
 			word-break: keep-all;
 		}
+		.blind{display: none !important;}
 		.bg_FFF{
 			background-color:#fff;
 		}
@@ -98,14 +99,17 @@
 			background-color: #3081f5;
 			border-radius:15px;
 		}
-		.menu_switcher{
+		.btn_controll_wrap label{display: inline-flex}
+		.btn_controll_wrap label input{display: none;}
+		.btn_controll_wrap label{
 			display: inline-flex;
 			align-self: center;
 			width: 24px;
 			height: 24px;
 			background-image:url(img/icon_burger.svg);
 		}
-		.menu_switcher.on{background-image:url(img/icon_x.svg);}
+		.btn_controll_wrap label:has(input:checked){background-image:url(img/icon_x.svg);}
+		
 		.menu{
 			display: flex;
 			justify-content: end;
@@ -163,7 +167,7 @@
 		.top_section{
 			display: block;
 			width:100vw;
-			height: calc(100vh-60px);
+			height: 100%;
 			box-sizing: border-box;
 			background-image: url(img/new_main.png);
 			background-position:50%;
@@ -795,12 +799,16 @@
 				padding-right: 0;
 				padding-left: 0;
 			}
-			.menu{
+			.header:has(label input) .menu{
 				display: none;
-				margin:15px -24px 0;
-				grid-column: 1/ span 2;
-				grid-row:2/3;
+				position: absolute;
+				top: 60px;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: #fff;
 			}
+			.header:has(label input:checked) .menu{display: block;}
 			.menu a{
 				border-radius: 0;
 				padding: 18px 24px;
@@ -1037,7 +1045,7 @@
 					 <!--btn_controll_wrap-->
 					<div class="btn_controll_wrap">
 						<a href="#none" class="btn_download">앱다운로드</a>
-                    	<a href="#none" class="menu_switcher"></a>
+                    	<label for="menu_switcher"><input type="checkbox" id="menu_switcher"><span class="blind">Switch Menu</span></label>
 					</div>
 					<!--//btn_controll_wrap-->
                     <!--menu-->
